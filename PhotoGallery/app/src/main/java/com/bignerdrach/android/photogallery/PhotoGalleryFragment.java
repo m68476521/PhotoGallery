@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -101,9 +102,17 @@ public class PhotoGalleryFragment extends Fragment {
             mItems = items;
             setupAdapter();
         }
+
+        AsyncTask<String, Void, Void> task = new AsyncTask<String, Void, Void>() {
+            @Override
+            protected Void doInBackground(String... params) {
+                for (String parameter : params) {
+                    Log.i(TAG, "Received parameter: " + parameter);
+                }
+                return null;
+            }
+        };
     }
-
-
 
     private void setupAdapter() {
         if (isAdded()) {
