@@ -34,11 +34,6 @@ public abstract class VisibleFragment extends Fragment {
     private BroadcastReceiver mOnShowNotification = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-//            Toast.makeText(getActivity(),
-//                    "Got a broadcast: " + intent.getAction(),
-//                    Toast.LENGTH_LONG)
-//                    .show();
-
             Log.i(TAG, "canceling notification");
             setResultCode(Activity.RESULT_CANCELED);
         }

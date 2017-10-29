@@ -22,8 +22,8 @@ import java.util.List;
 public class FlickrFetchr {
 
     private static final String TAG = "FlickrFetchr";
-    // TODO: remove this API_KEY before sent to git
     private static final String FETCH_RECENTS_METHOD = "flickr.photos.getRecent";
+    // TODO: add API_KEY
     private static final String API_KEY = "";
     private static final String SEARCH_METHOD = "flickr.photos.search";
     private static final Uri ENDPOINT = Uri

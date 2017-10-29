@@ -106,11 +106,6 @@ public class PollService extends IntentService {
                     .setAutoCancel(true)
                     .build();
 
-//            NotificationManagerCompat notificationManager =
-//                    NotificationManagerCompat.from(this);
-//            notificationManager.notify(0, notification);
-//
-//            sendBroadcast(new Intent(ACTION_SHOW_NOTIFICATION), PERM_PRIVATE);
             showBackgroundNotification(0, notification);
         }
 
