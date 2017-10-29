@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.widget.Toast;
 
 /**
  * Created by mike on 10/13/16.

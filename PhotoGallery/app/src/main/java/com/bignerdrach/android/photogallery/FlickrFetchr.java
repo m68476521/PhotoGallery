@@ -38,7 +38,7 @@ public class FlickrFetchr {
 
     public byte[] getUrlBytes(String urlSpec) throws IOException {
         URL url = new URL(urlSpec);
-        HttpURLConnection connection =(HttpURLConnection)url.openConnection();
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
         try {
             ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -46,12 +46,12 @@ public class FlickrFetchr {
 
             if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
                 throw new IOException(connection.getResponseMessage() +
-                    ": with MIKE" +
-                    urlSpec);
+                        ": with MIKE" +
+                        urlSpec);
             }
 
             int bytesRead = 0;
-            byte [] buffer = new byte[1024];
+            byte[] buffer = new byte[1024];
             while ((bytesRead = in.read(buffer)) > 0) {
                 out.write(buffer, 0, bytesRead);
             }
@@ -75,7 +75,7 @@ public class FlickrFetchr {
         String url = builderUrl(SEARCH_METHOD, query);
         return downloadGalleryItems(url);
     }
-    
+
     private List<GalleryItem> downloadGalleryItems(String url) {
 
         List<GalleryItem> items = new ArrayList<>();
@@ -85,7 +85,7 @@ public class FlickrFetchr {
             Log.i(TAG, "MIKE Received JSON: " + jsonString);
             JSONObject jsonBody = new JSONObject(jsonString);
             parseItems(items, jsonBody);
-        }catch (JSONException je) {
+        } catch (JSONException je) {
             Log.e(TAG, "Failed to parse JSON", je);
         } catch (IOException ioe) {
             Log.e(TAG, "Failed to fetch items", ioe);
@@ -95,7 +95,7 @@ public class FlickrFetchr {
     }
 
     private String builderUrl(String method, String query) {
-        Uri.Builder uriBuilder =  ENDPOINT.buildUpon()
+        Uri.Builder uriBuilder = ENDPOINT.buildUpon()
                 .appendQueryParameter("method", method);
 
         if (method.equals(SEARCH_METHOD)) {
@@ -106,7 +106,7 @@ public class FlickrFetchr {
     }
 
     private void parseItems(List<GalleryItem> items, JSONObject jsonBody)
-        throws IOException, JSONException {
+            throws IOException, JSONException {
 
         JSONObject photosJsonObject = jsonBody.getJSONObject("photos");
         JSONArray photosJsonArray = photosJsonObject.getJSONArray("photo");
