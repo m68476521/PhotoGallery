@@ -11,7 +11,6 @@ import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 
 import java.util.List;
@@ -23,7 +22,7 @@ import java.util.List;
 public class PollService extends IntentService {
     private static final String TAG = "PollService";
 
-//    private static final long POLL_INTERVAL = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
+    //    private static final long POLL_INTERVAL = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
     private static final long POLL_INTERVAL = 1000 * 60;
 
     public static final String ACTION_SHOW_NOTIFICATION =
@@ -34,13 +33,14 @@ public class PollService extends IntentService {
 
     public static final String REQUEST_CODE = "REQUEST_CODE";
     public static final String NOTIFICATION = "NOTIFICATION";
+
     public static Intent newIntent(Context context) {
         return new Intent(context, PollService.class);
     }
 
     public static void setServiceAlarm(Context context, boolean isOn) {
         Intent i = PollService.newIntent(context);
-        PendingIntent pi = PendingIntent.getService(context, 0, i , 0);
+        PendingIntent pi = PendingIntent.getService(context, 0, i, 0);
 
         AlarmManager alarmManager = (AlarmManager)
                 context.getSystemService(Context.ALARM_SERVICE);
@@ -95,7 +95,7 @@ public class PollService extends IntentService {
 
             Resources resources = getResources();
             Intent i = PhotoGalleryActivity.newIntent(this);
-            PendingIntent pi = PendingIntent.getActivity(this, 0 , i, 0);
+            PendingIntent pi = PendingIntent.getActivity(this, 0, i, 0);
 
             Notification notification = new NotificationCompat.Builder(this)
                     .setTicker(resources.getString(R.string.new_pictures_title))
