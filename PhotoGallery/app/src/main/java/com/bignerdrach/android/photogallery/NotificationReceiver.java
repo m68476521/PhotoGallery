@@ -25,7 +25,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         }
 
         int requestCode = i.getIntExtra(PollService.REQUEST_CODE, 0);
-        Notification notification = (Notification)
+        Notification notification =
                 i.getParcelableExtra(PollService.NOTIFICATION);
 
         NotificationManagerCompat notificationManager =
